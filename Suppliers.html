@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Suppliers - Stock Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom colors */
+      .bg-primary {
+        background-color: #1b81b0;
+      }
+      .text-primary {
+        color: #1b81b0;
+      }
+      .bg-secondary {
+        background-color: #455162;
+      }
+      .bg-opacity-primary {
+        background-color: rgba(27, 129, 176, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-white min-h-screen flex">
+    <div
+      class="w-72 min-h-screen bg-[#283342] py-7 z-50 flex flex-col gap-8 fixed top-0 left-0 transition-all duration-300"
+    >
+      <!-- Logo -->
+      <div class="px-6">
+        <img src="asset/logo-white.svg" alt="Logo" width="170" height="40" />
+      </div>
+      <!-- Profile Section -->
+      <div class="flex items-center gap-4 px-6">
+        <img
+          src="asset/prof.jpeg"
+          alt="Profile"
+          width="42"
+          height="42"
+          class="rounded-full aspect-square"
+        />
+        <div class="text-white whitespace-nowrap">
+          <h1 class="text-base">PT. Apotek Jogja</h1>
+          <p class="text-xs font-thin">Jl. Affandi No 31, Sleman</p>
+        </div>
+      </div>
+      <!-- Navigation Links -->
+      <div>
+        <ul class="text-white">
+          <li class="">
+            <a
+              href="dashboard.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Dashboard Icon -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M12.4444 0H1.55556C0.7 0 0 0.7 0 1.55556V12.4444C0 13.3 0.7 14 1.55556 14H12.4444C13.3 14 14 13.3 14 12.4444V1.55556C14 0.7 13.3 0 12.4444 0ZM1.55556 12.4444V1.55556H6.22222V12.4444H1.55556ZM12.4444 12.4444H7.77778V7H12.4444V12.4444ZM12.4444 5.44444H7.77778V1.55556H12.4444V5.44444Z"
+                  fill="white"
+                />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <!-- Transaction Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="transaction.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Transaction Icon -->
+              <svg
+                width="13"
+                height="12"
+                viewBox="0 0 13 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M9.8231 10.7621V2.81836"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.2017 8.37305L9.82304 10.7628L7.44434 8.37305"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M4.03159 1.23535V9.17906"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M1.65283 3.62507L4.03154 1.23535L6.41024 3.62507"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Transaction
+            </a>
+          </li>
+          <!-- Data transaction Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="DataTransaction.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Stock Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="20"
+                viewBox="0 0 48 48"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="4"
+                >
+                  <path d="M8 44V4h23l9 10.5V44z" />
+                  <path
+                    d="M15 28h6v7h-6zm-1 7h20M21 23h6v12h-6zm6-5h6v17h-6z"
+                  />
+                </g>
+              </svg>
+              Data Transaction
+            </a>
+          </li>
+
+          <!-- Stock Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="stock.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Stock Icon -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M12.6 0H1.4C0.7 0 0 0.63 0 1.4V3.507C0 4.011 0.301 4.445 0.7 4.69V12.6C0.7 13.37 1.47 14 2.1 14H11.9C12.53 14 13.3 13.37 13.3 12.6V4.69C13.699 4.445 14 4.011 14 3.507V1.4C14 0.63 13.3 0 12.6 0ZM11.9 12.6H2.1V4.9H11.9V12.6Z"
+                  fill="white"
+                />
+                <path d="M9.2 8H5V9.4H9.2V8Z" fill="white" />
+                <path
+                  d="M6.3999 6.5998L6.3999 10.7998L7.7999 10.7998L7.7999 6.5998L6.3999 6.5998Z"
+                  fill="white"
+                />
+              </svg>
+              Stock
+            </a>
+          </li>
+
+          <!-- Data Stock Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="DataStock.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Stock Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="20"
+                viewBox="0 0 48 48"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="4"
+                >
+                  <path d="M8 44V4h23l9 10.5V44z" />
+                  <path
+                    d="M15 28h6v7h-6zm-1 7h20M21 23h6v12h-6zm6-5h6v17h-6z"
+                  />
+                </g>
+              </svg>
+              Data Stock
+            </a>
+          </li>
+
+          <!-- Machine Learning Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="MachineLearning.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Machine Learning Icon -->
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M0 10.8889V12.4444H4.66667V10.8889H0ZM0 1.55556V3.11111H7.77778V1.55556H0ZM7.77778 14V12.4444H14V10.8889H7.77778V9.33333H6.22222V14H7.77778ZM3.11111 4.66667V6.22222H0V7.77778H3.11111V9.33333H4.66667V4.66667H3.11111ZM14 7.77778V6.22222H6.22222V7.77778H14ZM9.33333 4.66667H10.8889V3.11111H14V1.55556H10.8889V0H9.33333V4.66667Z"
+                  fill="white"
+                />
+              </svg>
+              Machine Learning
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Sidebar Toggle Button (Static) -->
+      <div
+        class="absolute bottom-28 md:bottom-4 right-0 bg-[#455162] px-2 py-5 -mr-7 cursor-pointer"
+      >
+        <svg
+          width="8"
+          height="5"
+          viewBox="0 0 8 5"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-3 h-3 rotate-90"
+        >
+          <path
+            d="M6.77405 0.209396L3.99642 2.98702L1.21879 0.209396C0.939597 -0.0697987 0.488591 -0.0697987 0.209396 0.209396C-0.0697987 0.488591 -0.0697987 0.939597 0.209396 1.21879L3.4953 4.5047C3.7745 4.78389 4.2255 4.78389 4.5047 4.5047L7.7906 1.21879C8.0698 0.939597 8.0698 0.488591 7.7906 0.209396C7.51141 -0.0626398 7.05324 -0.0697987 6.77405 0.209396Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-72 flex-1">
+      <!-- Search and Contact Developer Section -->
+      <div
+        class="bg-[#F7FAFD] py-8 mb-6 px-10 hidden md:flex justify-between items-center"
+      >
+        <div class="w-full max-w-md">
+          <input
+            type="search"
+            class="flex h-9 w-full rounded-2xl border border-gray-300 px-3 py-1 text-sm bg-[#E3EBF3] shadow-sm transition-colors focus:ring-1 focus:ring-gray-500 placeholder:text-[#A0AEC0] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            placeholder="Search for anything here..."
+          />
+        </div>
+        <a
+          href="https://wa.me/6289512230607"
+          target="_blank"
+          class="flex gap-2 items-center border border-[#1B81B0] rounded-2xl px-4 py-2 cursor-pointer"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M15.8926 15.8919C13.3458 18.4389 9.57465 18.9892 6.48852 17.562C6.03293 17.3786 5.65941 17.2303 5.30431 17.2303C4.31524 17.2362 3.08414 18.1952 2.4443 17.5561C1.80447 16.9162 2.76422 15.6842 2.76422 14.6891C2.76422 14.334 2.62185 13.9671 2.43844 13.5106C1.01053 10.425 1.56159 6.65256 4.10839 4.10633C7.3595 0.854019 12.6415 0.854019 15.8926 4.10549C19.1496 7.36283 19.1438 12.6404 15.8926 15.8919Z"
+              stroke="#1B81B0"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.92066 12.654C8.92066 12.366 8.94266 12.096 8.98666 11.844C9.03466 11.592 9.12266 11.352 9.25066 11.124C9.35866 10.908 9.48466 10.734 9.62866 10.602C9.77666 10.466 9.93666 10.334 10.1087 10.206C10.2847 10.074 10.4687 9.906 10.6607 9.702C10.8207 9.526 10.9267 9.348 10.9787 9.168C11.0347 8.988 11.0627 8.794 11.0627 8.586C11.0627 8.434 11.0447 8.292 11.0087 8.16C10.9727 8.028 10.9127 7.914 10.8287 7.818C10.7007 7.658 10.5387 7.546 10.3427 7.482C10.1467 7.414 9.94266 7.38 9.73066 7.38C9.53866 7.38 9.35466 7.406 9.17866 7.458C9.00666 7.51 8.86266 7.59 8.74666 7.698C8.62266 7.802 8.53066 7.932 8.47066 8.088C8.41466 8.24 8.38866 8.406 8.39266 8.586H7.07266C7.10466 8.21 7.20066 7.858 7.36066 7.53C7.52066 7.202 7.73666 6.936 8.00866 6.732C8.24066 6.548 8.50466 6.412 8.80066 6.324C9.09666 6.232 9.39266 6.186 9.68866 6.186C10.1127 6.186 10.5127 6.252 10.8887 6.384C11.2687 6.516 11.5847 6.73 11.8367 7.026C12.0207 7.234 12.1587 7.472 12.2507 7.74C12.3467 8.004 12.3947 8.278 12.3947 8.562C12.3947 8.942 12.3127 9.294 12.1487 9.618C11.9887 9.942 11.7827 10.238 11.5307 10.506C11.3987 10.646 11.2647 10.774 11.1287 10.89C10.9927 11.002 10.8667 11.112 10.7507 11.22C10.6347 11.328 10.5387 11.446 10.4627 11.574C10.3547 11.758 10.2927 11.924 10.2767 12.072C10.2607 12.216 10.2527 12.41 10.2527 12.654H8.92066ZM8.92666 15V13.548H10.2527V15H8.92666Z"
+              fill="#1B81B0"
+            />
+          </svg>
+          <span class="text-primary">Contact Developer</span>
+        </a>
+      </div>
+
+      <!-- Main Content Section -->
+      <div
+        class="w-full px-4 md:px-10 mb-6 text-black flex gap-10 flex-col md:flex-row"
+      >
+        <!-- Left Side -->
+        <div class="w-full md:w-2/3 flex flex-col gap-10">
+          <!-- Supplier Header -->
+          <div class="flex gap-6 max-w-md">
+            <div>
+              <img
+                src="asset/drug.jpg"
+                width="120"
+                height="120"
+                alt="drug"
+                class="rounded-full aspect-square"
+              />
+            </div>
+            <div class="flex flex-col justify-between">
+              <div>
+                <h1 class="text-2xl font-bold">Supplier & Distributor</h1>
+                <p class="text-base font-normal">Yogyakarta, Indonesia</p>
+              </div>
+              <div class="flex justify-between">
+                <div>
+                  <h2 class="text-2xl font-semibold text-center">10</h2>
+                  <p class="text-sm font-normal text-center">Agreement</p>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-semibold text-center">2</h2>
+                  <p class="text-sm font-normal text-center">On Going</p>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-semibold text-center">32</h2>
+                  <p class="text-sm font-normal text-center">Notifications</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation Distributors Card -->
+          <div class="bg-white shadow rounded-lg p-6">
+            <div class="flex mb-4 justify-between items-center">
+              <h2 class="text-xl font-bold mb-4">
+                Recommendation Distributors
+              </h2>
+              <a href="https://www.google.com/maps">
+                <button
+                  class="px-4 py-2 border rounded-3xl bg-primary text-white hover:bg-blue-950 transition"
+                >
+                  View Full Map
+                </button>
+              </a>
+            </div>
+            <!-- Ganti Google Map dengan Gambar Statis -->
+            <div class="w-full h-[450px]">
+              <img
+                src="asset/gambarMaps.png"
+                alt="Map Image"
+                class="w-full h-full object-cover rounded"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="w-full md:w-1/3 flex flex-col gap-10">
+          <!-- Distributor Active Section -->
+          <div class="bg-white shadow rounded-lg p-6">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-bold">Distributor Active</h3>
+              <a href="#" class="text-cyan-500 text-sm">View All</a>
+            </div>
+            <div class="flex flex-col gap-4 my-4">
+              <!-- Distributor Item 1 -->
+              <div class="flex justify-between items-center">
+                <div class="flex gap-2 items-center">
+                  <div
+                    class="bg-primary bg-opacity-primary p-4 rounded-full flex items-center"
+                  >
+                    <svg
+                      width="22"
+                      height="28"
+                      viewBox="0 0 22 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="text-primary w-5 h-5"
+                    >
+                      <path
+                        d="M9.00016 15.3337H5.66683V11.3337H9.00016V8.00033H13.0002V11.3337H16.3335V15.3337H13.0002V18.667H9.00016V15.3337ZM11.0002 0.666992L0.333496 4.66699V12.787C0.333496 19.5203 4.88016 25.8003 11.0002 27.3337C17.1202 25.8003 21.6668 19.5203 21.6668 12.787V4.66699L11.0002 0.666992ZM19.0002 12.787C19.0002 18.1203 15.6002 23.0537 11.0002 24.5603C6.40016 23.0537 3.00016 18.1337 3.00016 12.787V6.52033L11.0002 3.52033L19.0002 6.52033V12.787Z"
+                        fill="#1B81B0"
+                      />
+                    </svg>
+                  </div>
+                  <p>PD. Rumah Berkah</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <!-- Distributor Item 2 -->
+              <div class="flex justify-between items-center">
+                <div class="flex gap-2 items-center">
+                  <div
+                    class="bg-primary bg-opacity-primary p-4 rounded-full flex items-center"
+                  >
+                    <svg
+                      width="22"
+                      height="28"
+                      viewBox="0 0 22 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="text-primary w-5 h-5"
+                    >
+                      <path
+                        d="M9.00016 15.3337H5.66683V11.3337H9.00016V8.00033H13.0002V11.3337H16.3335V15.3337H13.0002V18.667H9.00016V15.3337ZM11.0002 0.666992L0.333496 4.66699V12.787C0.333496 19.5203 4.88016 25.8003 11.0002 27.3337C17.1202 25.8003 21.6668 19.5203 21.6668 12.787V4.66699L11.0002 0.666992ZM19.0002 12.787C19.0002 18.1203 15.6002 23.0537 11.0002 24.5603C6.40016 23.0537 3.00016 18.1337 3.00016 12.787V6.52033L11.0002 3.52033L19.0002 6.52033V12.787Z"
+                        fill="#1B81B0"
+                      />
+                    </svg>
+                  </div>
+                  <p>PD. Rumah Berkah</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Distributor Active Section -->
+          <div class="bg-white shadow rounded-lg p-6">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-bold">Supplier Active</h3>
+              <a href="#" class="text-cyan-500 text-sm">View All</a>
+            </div>
+            <div class="flex flex-col gap-4 my-4">
+              <!-- Supplier Item 1 -->
+              <div class="flex justify-between items-center">
+                <div class="flex gap-2 items-center">
+                  <div
+                    class="bg-primary bg-opacity-primary p-4 rounded-full flex items-center"
+                  >
+                    <svg
+                      width="22"
+                      height="28"
+                      viewBox="0 0 22 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="text-primary w-5 h-5"
+                    >
+                      <path
+                        d="M9.00016 15.3337H5.66683V11.3337H9.00016V8.00033H13.0002V11.3337H16.3335V15.3337H13.0002V18.667H9.00016V15.3337ZM11.0002 0.666992L0.333496 4.66699V12.787C0.333496 19.5203 4.88016 25.8003 11.0002 27.3337C17.1202 25.8003 21.6668 19.5203 21.6668 12.787V4.66699L11.0002 0.666992ZM19.0002 12.787C19.0002 18.1203 15.6002 23.0537 11.0002 24.5603C6.40016 23.0537 3.00016 18.1337 3.00016 12.787V6.52033L11.0002 3.52033L19.0002 6.52033V12.787Z"
+                        fill="#1B81B0"
+                      />
+                    </svg>
+                  </div>
+                  <p>PD. Rumah Berkah</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div class="p-1 rounded-full border cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Feedback & Ratings Section -->
+          <div class="bg-white shadow rounded-lg p-6">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-bold">Feedback & Ratings</h3>
+              <a href="#" class="text-cyan-500 text-sm">View All</a>
+            </div>
+            <div class="flex flex-col gap-4 my-4">
+              <!-- Feedback Item 1 -->
+              <div class="flex gap-2 items-center">
+                <div
+                  class="bg-primary bg-opacity-primary p-4 rounded-full flex items-center"
+                >
+                  <svg
+                    width="22"
+                    height="28"
+                    viewBox="0 0 22 28"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="text-primary w-5 h-5"
+                  >
+                    <path
+                      d="M9.00016 15.3337H5.66683V11.3337H9.00016V8.00033H13.0002V11.3337H16.3335V15.3337H13.0002V18.667H9.00016V15.3337ZM11.0002 0.666992L0.333496 4.66699V12.787C0.333496 19.5203 4.88016 25.8003 11.0002 27.3337C17.1202 25.8003 21.6668 19.5203 21.6668 12.787V4.66699L11.0002 0.666992ZM19.0002 12.787C19.0002 18.1203 15.6002 23.0537 11.0002 24.5603C6.40016 23.0537 3.00016 18.1337 3.00016 12.787V6.52033L11.0002 3.52033L19.0002 6.52033V12.787Z"
+                      fill="#1B81B0"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p>PD. Rumah Berkah</p>
+                  <button
+                    class="px-4 py-2 rounded-full border border-primary mt-2 transition-colors duration-300 hover:bg-primary hover:text-white"
+                  >
+                    Profile
+                  </button>
+                </div>
+              </div>
+              <!-- Feedback Item 2 -->
+              <div class="flex gap-2 items-center">
+                <div
+                  class="bg-primary bg-opacity-primary p-4 rounded-full flex items-center"
+                >
+                  <svg
+                    width="22"
+                    height="28"
+                    viewBox="0 0 22 28"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="text-primary w-5 h-5"
+                  >
+                    <path
+                      d="M9.00016 15.3337H5.66683V11.3337H9.00016V8.00033H13.0002V11.3337H16.3335V15.3337H13.0002V18.667H9.00016V15.3337ZM11.0002 0.666992L0.333496 4.66699V12.787C0.333496 19.5203 4.88016 25.8003 11.0002 27.3337C17.1202 25.8003 21.6668 19.5203 21.6668 12.787V4.66699L11.0002 0.666992ZM19.0002 12.787C19.0002 18.1203 15.6002 23.0537 11.0002 24.5603C6.40016 23.0537 3.00016 18.1337 3.00016 12.787V6.52033L11.0002 3.52033L19.0002 6.52033V12.787Z"
+                      fill="#1B81B0"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p>PD. Rumah Berkah</p>
+                  <button
+                    class="px-4 py-2 rounded-full border border-primary mt-2 transition-colors duration-300 hover:bg-primary hover:text-white"
+                  >
+                    Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Distributor Table -->
+      <div class="px-10 mb-10 overflow-x-auto">
+        <table class="min-w-full border">
+          <thead class="border-b bg-gray-200">
+            <tr class="whitespace-nowrap">
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                No
+              </th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Distributor
+              </th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Distance
+              </th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Address
+              </th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Stock
+              </th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <!-- Distributor Row 1 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">1</td>
+              <td class="px-6 py-4">PT. Indofarma G.M</td>
+              <td class="px-6 py-4">0.5 m</td>
+              <td class="px-6 py-4">
+                Jl. Tembak No 2, Manggarani, Umbulharjo, Yogyakarta, Indonesia
+              </td>
+              <td class="px-6 py-4">All Products Ready</td>
+              <td class="">
+                <button
+                  class="bg-primary text-white p-2 rounded-lg transition-colors duration-300 hover:bg-[#13668D] hover:text-white"
+                >
+                  Call Now
+                </button>
+              </td>
+            </tr>
+            <!-- Distributor Row 2 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">2</td>
+              <td class="px-6 py-4">PT. Indofarma G.M Cabang Jember</td>
+              <td class="px-6 py-4">1.20 km</td>
+              <td class="px-6 py-4">
+                Jl. Situbondo No 2, Jember, Jawa Timur, Indonesia
+              </td>
+              <td class="px-6 py-4">All Products Ready</td>
+              <td class="">
+                <button
+                  class="bg-primary text-white p-2 rounded-lg transition-colors duration-300 hover:bg-[#13668D] hover:text-white"
+                >
+                  Call Now
+                </button>
+              </td>
+            </tr>
+            <!-- Tambahkan lebih banyak baris sesuai data -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="flex justify-between items-center px-10 mb-10">
+        <div class="flex items-center">
+          <label for="limit" class="mr-2">Showing</label>
+          <select id="limit" class="border rounded px-2 py-1">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+          <span class="ml-2">results of 312</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="flex items-center justify-center w-8 h-8 border rounded hover:bg-primary hover:text-white"
+          >
+            <!-- Prev Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 27 27"
+              stroke="currentColor"
+            >
+              <rect
+                width="27"
+                height="27"
+                rx="13.5"
+                transform="matrix(-1 0 0 1 27 0)"
+                fill="white"
+              />
+              <rect
+                x="-0.2"
+                y="0.2"
+                width="26.6"
+                height="26.6"
+                rx="13.3"
+                transform="matrix(-1 0 0 1 26.6 0)"
+                stroke="#1D242E"
+                stroke-opacity="0.3"
+                stroke-width="0.4"
+              />
+              <path
+                d="M14.7906 16.774L12.013 13.9964L14.7906 11.2188C15.0698 10.9396 15.0698 10.4886 14.7906 10.2094C14.5114 9.9302 14.0604 9.9302 13.7812 10.2094L10.4953 13.4953C10.2161 13.7745 10.2161 14.2255 10.4953 14.5047L13.7812 17.7906C14.0604 18.0698 14.5114 18.0698 14.7906 17.7906C15.0626 17.5114 15.0698 17.0532 14.7906 16.774Z"
+                fill="#1D242E"
+                fill-opacity="0.3"
+              />
+            </svg>
+          </button>
+          <span>Page 1</span>
+          <button
+            class="flex items-center justify-center w-8 h-8 border rounded hover:bg-primary hover:text-white"
+          >
+            <!-- Next Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 27 27"
+              stroke="currentColor"
+            >
+              <rect
+                x="0.2"
+                y="0.2"
+                width="26.6"
+                height="26.6"
+                rx="13.3"
+                stroke="#1B81B0"
+                stroke-width="0.4"
+              />
+              <path
+                d="M12.2094 16.774L14.987 13.9964L12.2094 11.2188C11.9302 10.9396 11.9302 10.4886 12.2094 10.2094C12.4886 9.9302 12.9396 9.9302 13.2188 10.2094L16.5047 13.4953C16.7839 13.7745 16.7839 14.2255 16.5047 14.5047L13.2188 17.7906C12.9396 18.0698 12.4886 18.0698 12.2094 17.7906C11.9374 17.5114 11.9302 17.0532 12.2094 16.774Z"
+                fill="#1B81B0"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

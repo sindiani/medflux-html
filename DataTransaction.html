@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Transaction - Transaction Dashboard</title>
+    <link rel="icon" href="asset/Main-Logo.png" type="image/x-icon" />
+
+    <!-- html to image screenshot import from internet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- download to pdf import from internet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- swalfire alert import from internet -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom colors */
+      .bg-primary {
+        background-color: #1b81b0;
+      }
+      .text-primary {
+        color: #1b81b0;
+      }
+      .bg-warning {
+        background-color: #f5ce00;
+      }
+      .text-danger {
+        color: #f0483e;
+      }
+      .bg-secondary {
+        background-color: #455162;
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen bg-white">
+    <!-- Sidebar -->
+    <div
+      class="w-72 min-h-screen bg-[#283342] py-7 z-50 flex flex-col gap-8 fixed top-0 left-0 transition-all duration-300"
+    >
+      <!-- Logo -->
+      <div class="px-6">
+        <img src="asset/logo-white.svg" alt="Logo" width="170" height="40" />
+      </div>
+      <!-- Profile Section -->
+      <div class="flex items-center gap-4 px-6">
+        <img
+          src="asset/prof.jpeg"
+          alt="Profile"
+          width="42"
+          height="42"
+          class="rounded-full aspect-square"
+        />
+        <div class="text-white whitespace-nowrap">
+          <h1 class="text-base">PT. Apotek Jogja</h1>
+          <p class="text-xs font-thin">Jl. Affandi No 31, Sleman</p>
+        </div>
+      </div>
+      <!-- Navigation Links -->
+      <div>
+        <ul class="text-white">
+          <li>
+            <a
+              href="dashboard.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Dashboard Icon -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M12.4444 0H1.55556C0.7 0 0 0.7 0 1.55556V12.4444C0 13.3 0.7 14 1.55556 14H12.4444C13.3 14 14 13.3 14 12.4444V1.55556C14 0.7 13.3 0 12.4444 0ZM1.55556 12.4444V1.55556H6.22222V12.4444H1.55556ZM12.4444 12.4444H7.77778V7H12.4444V12.4444ZM12.4444 5.44444H7.77778V1.55556H12.4444V5.44444Z"
+                  fill="white"
+                />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <!-- Transaction Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="transaction.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Transaction Icon -->
+              <svg
+                width="13"
+                height="12"
+                viewBox="0 0 13 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M9.8231 10.7621V2.81836"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.2017 8.37305L9.82304 10.7628L7.44434 8.37305"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M4.03159 1.23535V9.17906"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M1.65283 3.62507L4.03154 1.23535L6.41024 3.62507"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Transaction
+            </a>
+          </li>
+          <!-- Data transaction Link -->
+          <li class="flex items-center gap-4 bg-primary">
+            <a
+              href="DataTransaction.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Stock Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="20"
+                viewBox="0 0 48 48"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="4"
+                >
+                  <path d="M8 44V4h23l9 10.5V44z" />
+                  <path
+                    d="M15 28h6v7h-6zm-1 7h20M21 23h6v12h-6zm6-5h6v17h-6z"
+                  />
+                </g>
+              </svg>
+              Data Transaction
+            </a>
+          </li>
+
+          <!-- Stock Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="stock.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Stock Icon -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M12.6 0H1.4C0.7 0 0 0.63 0 1.4V3.507C0 4.011 0.301 4.445 0.7 4.69V12.6C0.7 13.37 1.47 14 2.1 14H11.9C12.53 14 13.3 13.37 13.3 12.6V4.69C13.699 4.445 14 4.011 14 3.507V1.4C14 0.63 13.3 0 12.6 0ZM11.9 12.6H2.1V4.9H11.9V12.6Z"
+                  fill="white"
+                />
+                <path d="M9.2 8H5V9.4H9.2V8Z" fill="white" />
+                <path
+                  d="M6.3999 6.5998L6.3999 10.7998L7.7999 10.7998L7.7999 6.5998L6.3999 6.5998Z"
+                  fill="white"
+                />
+              </svg>
+              Stock
+            </a>
+          </li>
+
+          <!-- Data Stock Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="DataStock.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4M12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5M6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2"
+                />
+              </svg>
+              Data Stock
+            </a>
+          </li>
+
+          <!-- Machine Learning Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="MachineLearning.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Machine Learning Icon -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M0 10.8889V12.4444H4.66667V10.8889H0ZM0 1.55556V3.11111H7.77778V1.55556H0ZM7.77778 14V12.4444H14V10.8889H7.77778V9.33333H6.22222V14H7.77778ZM3.11111 4.66667V6.22222H0V7.77778H3.11111V9.33333H4.66667V4.66667H3.11111ZM14 7.77778V6.22222H6.22222V7.77778H14ZM9.33333 4.66667H10.8889V3.11111H14V1.55556H10.8889V0H9.33333V4.66667Z"
+                  fill="white"
+                />
+              </svg>
+              Machine Learning
+            </a>
+          </li>
+
+          <!-- Settings Link -->
+          <li class="flex items-center gap-4">
+            <a
+              href="Settings.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <!-- Machine Learning Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17ZM18.41 14l.8.9l-1.28 2.22l-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24l-1.3-2.21l.8-.9a3 3 0 0 0 0-4l-.8-.9l1.28-2.2l1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24l1.28 2.22l-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 4 4a4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2"
+                />
+              </svg>
+              Settings
+            </a>
+          </li>
+
+          <li class="flex items-center gap-4 mt-16 hover:bg-red-500">
+            <a
+              href="index.html"
+              class="flex items-center w-full h-full gap-4 px-6 py-4 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M5 3h6a3 3 0 0 1 3 3v4h-1V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-4h1v4a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3m3 9h11.25L16 8.75l.66-.75l4.5 4.5l-4.5 4.5l-.66-.75L19.25 13H8z"
+                />
+              </svg>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="flex-1 ml-72">
+      <div
+        class="bg-[#F7FAFD] py-8 mb-6 px-10 hidden md:flex justify-between items-center"
+      >
+        <div class="w-full max-w-md">
+          <input
+            type="search"
+            class="flex h-9 w-full rounded-2xl border border-gray-300 px-3 py-1 text-sm bg-[#E3EBF3] shadow-sm transition-colors focus:ring-1 focus:ring-gray-500 placeholder:text-[#A0AEC0] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+            placeholder="Search for anything here..."
+          />
+        </div>
+        <a
+          href="https://wa.me/6289512230607"
+          target="_blank"
+          class="flex gap-2 items-center border border-[#1B81B0] rounded-2xl px-4 py-2 cursor-pointer"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M15.8926 15.8919C13.3458 18.4389 9.57465 18.9892 6.48852 17.562C6.03293 17.3786 5.65941 17.2303 5.30431 17.2303C4.31524 17.2362 3.08414 18.1952 2.4443 17.5561C1.80447 16.9162 2.76422 15.6842 2.76422 14.6891C2.76422 14.334 2.62185 13.9671 2.43844 13.5106C1.01053 10.425 1.56159 6.65256 4.10839 4.10633C7.3595 0.854019 12.6415 0.854019 15.8926 4.10549C19.1496 7.36283 19.1438 12.6404 15.8926 15.8919Z"
+              stroke="#1B81B0"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.92066 12.654C8.92066 12.366 8.94266 12.096 8.98666 11.844C9.03466 11.592 9.12266 11.352 9.25066 11.124C9.35866 10.908 9.48466 10.734 9.62866 10.602C9.77666 10.466 9.93666 10.334 10.1087 10.206C10.2847 10.074 10.4687 9.906 10.6607 9.702C10.8207 9.526 10.9267 9.348 10.9787 9.168C11.0347 8.988 11.0627 8.794 11.0627 8.586C11.0627 8.434 11.0447 8.292 11.0087 8.16C10.9727 8.028 10.9127 7.914 10.8287 7.818C10.7007 7.658 10.5387 7.546 10.3427 7.482C10.1467 7.414 9.94266 7.38 9.73066 7.38C9.53866 7.38 9.35466 7.406 9.17866 7.458C9.00666 7.51 8.86266 7.59 8.74666 7.698C8.62266 7.802 8.53066 7.932 8.47066 8.088C8.41466 8.24 8.38866 8.406 8.39266 8.586H7.07266C7.10466 8.21 7.20066 7.858 7.36066 7.53C7.52066 7.202 7.73666 6.936 8.00866 6.732C8.24066 6.548 8.50466 6.412 8.80066 6.324C9.09666 6.232 9.39266 6.186 9.68866 6.186C10.1127 6.186 10.5127 6.252 10.8887 6.384C11.2687 6.516 11.5847 6.73 11.8367 7.026C12.0207 7.234 12.1587 7.472 12.2507 7.74C12.3467 8.004 12.3947 8.278 12.3947 8.562C12.3947 8.942 12.3127 9.294 12.1487 9.618C11.9887 9.942 11.7827 10.238 11.5307 10.506C11.3987 10.646 11.2647 10.774 11.1287 10.89C10.9927 11.002 10.8667 11.112 10.7507 11.22C10.6347 11.328 10.5387 11.446 10.4627 11.574C10.3547 11.758 10.2927 11.924 10.2767 12.072C10.2607 12.216 10.2527 12.41 10.2527 12.654H8.92066ZM8.92666 15V13.548H10.2527V15H8.92666Z"
+              fill="#1B81B0"
+            />
+          </svg>
+          <span class="text-primary">Contact Developer</span>
+        </a>
+      </div>
+      <!-- Header Section -->
+      <div class="flex items-center justify-between px-10">
+        <div>
+          <h1 class="mb-2 text-xl font-bold md:text-2xl">
+            <a href="stock.html" class="text-gray-300">Stock</a>
+            <span class="mx-2">></span>
+            <span class="text-black">Data Transaction</span>
+          </h1>
+          <p class="text-base font-normal">
+            Sales transaction report of the pharmacy
+          </p>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex flex-col items-center gap-6 px-10 mb-10 md:flex-row">
+          <button
+            onclick="exportToPDF()"
+            class="flex gap-2 px-4 py-2 transition-colors duration-300 border text-primary border-primary rounded-3xl hover:bg-gray-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+              />
+            </svg>
+            <span>Download PDF</span>
+          </button>
+
+          <button
+            id="add-stock-button"
+            class="flex gap-2 text-white px-4 py-2 border bg-primary border-primary rounded-3xl items-center transition-colors duration-300 hover:bg-[#13668D] hover:text-white"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.1429 6.85714H6.85714V11.1429C6.85714 11.6143 6.47143 12 6 12C5.52857 12 5.14286 11.6143 5.14286 11.1429V6.85714H0.857143C0.385714 6.85714 0 6.47143 0 6C0 5.52857 0.385714 5.14286 0.857143 5.14286H5.14286V0.857143C5.14286 0.385714 5.52857 0 6 0C6.47143 0 6.85714 0.385714 6.85714 0.857143V5.14286H11.1429C11.6143 5.14286 12 5.52857 12 6C12 6.47143 11.6143 6.85714 11.1429 6.85714Z"
+                fill="white"
+              />
+            </svg>
+            <span>Add Transaction</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="flex flex-col gap-4 px-10 my-10 md:flex-row md:gap-10">
+        <div class="w-full md:max-w-xs">
+          <input
+            type="text"
+            placeholder="Search Transaction..."
+            class="flex h-9 w-full rounded-2xl border border-gray-300 px-4 py-1 text-sm bg-[#E3EBF3] shadow-sm focus:ring-1 focus:ring-gray-500 placeholder:text-[#A0AEC0] focus:outline-none"
+          />
+        </div>
+        <div class="w-full md:max-w-[250px]">
+          <select class="w-full px-4 py-2 border rounded-2xl">
+            <option value="" disabled selected>Select sort</option>
+            <option value="1">Ascending</option>
+            <option value="2">Descending</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stock Table -->
+      <div class="max-w-6xl px-10 mb-10 overflow-x-auto">
+        <table class="min-w-full border">
+          <thead class="bg-gray-200 border-b">
+            <tr class="whitespace-nowrap">
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                No
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Transaction Date
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Transaction ID
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Medicine Name
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Medicine Code
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Disease
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Unit Price
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Quantity
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Total Price
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Remain Stock
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Gender
+              </th>
+              <th class="px-6 py-3 text-sm font-medium text-left text-gray-700">
+                Payment Method
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <!-- Row 1 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">1</td>
+              <td class="px-6 py-4">12-Des-2024</td>
+              <td class="px-6 py-4">TRX1234567</td>
+              <td class="px-6 py-4">Paracetamol 500mg</td>
+              <td class="px-6 py-4">MED001</td>
+              <td class="px-6 py-4">Flu, Demam</td>
+              <td class="px-6 py-4">Rp 10,000</td>
+              <td class="px-6 py-4">2</td>
+              <td class="px-6 py-4">Rp 20.000</td>
+              <td class="px-6 py-4">148</td>
+              <td class="px-6 py-4">Woman</td>
+              <td class="px-6 py-4">Qris</td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">2</td>
+              <td class="px-6 py-4">12-Des-2024</td>
+              <td class="px-6 py-4">TRX1234127</td>
+              <td class="px-6 py-4">Ibuprofen 200mg</td>
+              <td class="px-6 py-4">MED002</td>
+              <td class="px-6 py-4">Luka Bakar</td>
+              <td class="px-6 py-4">Rp. 13,750</td>
+              <td class="px-6 py-4">2</td>
+              <td class="px-6 py-4">Rp. 13,750</td>
+              <td class="px-6 py-4">38</td>
+              <td class="px-6 py-4">Man</td>
+              <td class="px-6 py-4">Kredit</td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">3</td>
+              <td class="px-6 py-4">12-Des-2024</td>
+              <td class="px-6 py-4">TRX1234787</td>
+              <td class="px-6 py-4">Amoxicillin 500mg</td>
+              <td class="px-6 py-4">MED003</td>
+              <td class="px-6 py-4">Flu</td>
+              <td class="px-6 py-4">Rp. 25,750</td>
+              <td class="px-6 py-4">1</td>
+              <td class="px-6 py-4">Rp. 25,750</td>
+              <td class="px-6 py-4">124</td>
+              <td class="px-6 py-4">Woman</td>
+              <td class="px-6 py-4">Tunai</td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">4</td>
+              <td class="px-6 py-4">11-Des-2024</td>
+              <td class="px-6 py-4">TRX1231237</td>
+              <td class="px-6 py-4">Cetirizine 10mg</td>
+              <td class="px-6 py-4">MED004</td>
+              <td class="px-6 py-4">Flu</td>
+              <td class="px-6 py-4">Rp. 17,150</td>
+              <td class="px-6 py-4">1</td>
+              <td class="px-6 py-4">Rp. 17,150</td>
+              <td class="px-6 py-4">114</td>
+              <td class="px-6 py-4">Man</td>
+              <td class="px-6 py-4">Tunai</td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr class="border-b">
+              <td class="px-6 py-4">5</td>
+              <td class="px-6 py-4">11-Des-2024</td>
+              <td class="px-6 py-4">TRX1232348</td>
+              <td class="px-6 py-4">Chlorpheniramine</td>
+              <td class="px-6 py-4">MED005</td>
+              <td class="px-6 py-4">Flu</td>
+              <td class="px-6 py-4">Rp. 19,050</td>
+              <td class="px-6 py-4">1</td>
+              <td class="px-6 py-4">Rp. 19,050</td>
+              <td class="px-6 py-4">203</td>
+              <td class="px-6 py-4">Woman</td>
+              <td class="px-6 py-4">Tunai</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="flex items-center justify-between px-10 mb-10">
+        <div class="flex items-center">
+          <label for="limit" class="mr-2">Showing</label>
+          <select id="limit" class="px-2 py-1 border rounded">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+          <span class="ml-2">results of 312</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="flex items-center justify-center w-8 h-8 border rounded hover:bg-primary hover:text-white"
+          >
+            <!-- Prev Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 27 27"
+              stroke="currentColor"
+            >
+              <rect
+                width="27"
+                height="27"
+                rx="13.5"
+                transform="matrix(-1 0 0 1 27 0)"
+                fill="white"
+              />
+              <rect
+                x="-0.2"
+                y="0.2"
+                width="26.6"
+                height="26.6"
+                rx="13.3"
+                transform="matrix(-1 0 0 1 26.6 0)"
+                stroke="#1D242E"
+                stroke-opacity="0.3"
+                stroke-width="0.4"
+              />
+              <path
+                d="M14.7906 16.774L12.013 13.9964L14.7906 11.2188C15.0698 10.9396 15.0698 10.4886 14.7906 10.2094C14.5114 9.9302 14.0604 9.9302 13.7812 10.2094L10.4953 13.4953C10.2161 13.7745 10.2161 14.2255 10.4953 14.5047L13.7812 17.7906C14.0604 18.0698 14.5114 18.0698 14.7906 17.7906C15.0626 17.5114 15.0698 17.0532 14.7906 16.774Z"
+                fill="#1D242E"
+                fill-opacity="0.3"
+              />
+            </svg>
+          </button>
+          <span>Page 1</span>
+          <button
+            class="flex items-center justify-center w-8 h-8 border rounded hover:bg-primary hover:text-white"
+          >
+            <!-- Next Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 27 27"
+              stroke="currentColor"
+            >
+              <rect
+                x="0.2"
+                y="0.2"
+                width="26.6"
+                height="26.6"
+                rx="13.3"
+                stroke="#1B81B0"
+                stroke-width="0.4"
+              />
+              <path
+                d="M12.2094 16.774L14.987 13.9964L12.2094 11.2188C11.9302 10.9396 11.9302 10.4886 12.2094 10.2094C12.4886 9.9302 12.9396 9.9302 13.2188 10.2094L16.5047 13.4953C16.7839 13.7745 16.7839 14.2255 16.5047 14.5047L13.2188 17.7906C12.9396 18.0698 12.4886 18.0698 12.2094 17.7906C11.9374 17.5114 11.9302 17.0532 12.2094 16.774Z"
+                fill="#1B81B0"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div
+      id="modal"
+      class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50"
+    >
+      <div class="w-3/4 p-6 overflow-auto bg-white rounded-lg h-3/4">
+        <div class="flex items-center justify-between">
+          <h2 class="mb-4 text-xl font-bold">Add Transaction Data</h2>
+          <button id="close-icon" class="mb-4 text-slate-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="currentColor"
+                d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m0 26C9.4 28 4 22.6 4 16S9.4 4 16 4s12 5.4 12 12s-5.4 12-12 12"
+              />
+              <path
+                fill="currentColor"
+                d="M21.4 23L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-col" id="add-stock-form">
+          <div class="flex w-full gap-7">
+            <div class="flex flex-col w-1/2 space-y-2">
+              <span class="font-semibold">Medicine Name</span>
+              <input
+                type="text"
+                placeholder="Medicine Name"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+              <span class="font-semibold">Medicine Code</span>
+              <input
+                type="text"
+                placeholder="Enter Medicine Code"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+              <span class="font-semibold">Unit Price</span>
+              <input
+                type="text"
+                placeholder="Rp"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+              <span class="font-semibold">Quantity</span>
+              <input
+                type="number"
+                placeholder="Enter Quantity"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+              <span class="font-semibold">Total Price</span>
+              <input
+                type="text"
+                placeholder="Rp"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+            </div>
+            <div class="flex flex-col w-1/2 space-y-2">
+              <span class="font-semibold">Disease</span>
+              <input
+                type="text"
+                placeholder="Enter Disease"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+              <span class="font-semibold">Gender</span>
+              <select
+                name="gender"
+                id="gender"
+                placeholder="Select gender"
+                class="px-4 py-2 border rounded-lg"
+                required
+              >
+                <option value="pria">Laki - Laki</option>
+                <option value="wanita">Perempuan</option>
+              </select>
+              <span class="font-semibold">Payment Method</span>
+              <select
+                name="gender"
+                id="gender"
+                placeholder="Select gender"
+                class="px-4 py-2 border rounded-lg"
+                required
+              >
+                <option value="tunai">Tunai</option>
+                <option value="wanita">Transfer</option>
+                <option value="qris">QRIS</option>
+                <option value="kredit">Kredit</option>
+              </select>
+              <span class="font-semibold">Transaction Date</span>
+              <input
+                type="date"
+                placeholder="Select Transaction Date"
+                class="px-4 py-2 border rounded-lg"
+                required
+              />
+            </div>
+          </div>
+          <div class="flex justify-end mt-2 space-x-3">
+            <button
+              type="button"
+              id="close-modal"
+              class="p-2 text-black bg-white border rounded-md border-primary"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="handleAddToInventory()"
+              class="p-2 text-white rounded-md bg-primary"
+            >
+              Add to Inventory
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Modal Functionality
+      const addStockButton = document.getElementById('add-stock-button');
+      const modal = document.getElementById('modal');
+      const closeModalButton = document.getElementById('close-modal');
+      const closeIcon = document.getElementById('close-icon');
+      const addStockForm = document.getElementById('add-stock-form');
+
+      // Show Modal
+      addStockButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+      });
+
+      // Close Modal
+      closeModalButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+      closeIcon.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+
+      // Handle Form Submission
+      addStockForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Your logic for adding stock
+        alert('Stock Added Successfully!');
+        modal.classList.add('hidden');
+      });
+    </script>
+
+    <!-- Scripts -->
+    <!-- function JavaScript for Export data into pdf -->
+    <script>
+      async function exportToPDF() {
+        const { jsPDF } = window.jspdf;
+
+        // Select the full page or a specific element
+        const element = document.body;
+
+        // Use html2canvas to take a screenshot
+        const canvas = await html2canvas(element, { scale: 2 });
+        const imgData = canvas.toDataURL('image/png');
+
+        // Create a jsPDF instance
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4',
+        });
+
+        // Calculate dimensions to fit A4 size
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pageWidth;
+        const imgHeight = (canvas.height * pageWidth) / canvas.width;
+
+        // Add image to PDF
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+        // Download the PDF
+        pdf.save('screenshot.pdf');
+        Swal.fire({
+          title: 'Good job!',
+          text: 'You downloaded the file!',
+          icon: 'success',
+        });
+      }
+    </script>
+
+    <script>
+      let distributorCount = 1;
+
+      function handleAddDistributor() {
+        distributorCount++;
+
+        // Get the container where distributors are appended
+        const container = document.getElementById('distributors-container');
+
+        // Create a new distributor section
+        const newDistributor = document.createElement('div');
+        newDistributor.classList.add(
+          'flex',
+          'flex-col',
+          'w-full',
+          'space-y-2',
+          'distributor-section'
+        );
+
+        newDistributor.innerHTML = `
+      <p class="text-lg font-bold">Distributor ${distributorCount}</p>
+      <span class="font-semibold">Distributor Name</span>
+      <input
+        type="text"
+        placeholder="Enter Distributor Name"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+      <span class="font-semibold">Address</span>
+      <input
+        type="text"
+        placeholder="Enter Address"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+      <span class="font-semibold">Link Google Maps</span>
+      <input
+        type="text"
+        placeholder="Enter Link Address"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+    `;
+
+        // Append the new section to the container
+        container.appendChild(newDistributor);
+      }
+
+      function handleAddToInventory() {
+        modal.classList.add('hidden');
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You will add medicine data into inventory!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, add it!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: 'Added!',
+              text: 'Your transaction has been added.',
+              icon: 'success',
+            });
+          }
+        });
+      }
+
+      // Fungsi untuk membersihkan semua input di modal
+      function clearModalFields() {
+        document.querySelector('input[placeholder="Medicine Name"]').value = '';
+        document.querySelector(
+          'input[placeholder="Select Purchase Date"]'
+        ).value = '';
+        document.querySelector('input[placeholder="Enter Disease"]').value = '';
+        document.getElementById('type').value = '';
+        document.querySelector(
+          'input[placeholder="Select Expired Date"]'
+        ).value = '';
+        document.querySelector('input[placeholder="Enter Total Stock"]').value =
+          '';
+        document.querySelector('input[placeholder="Rp "]').value = '';
+
+        // Bersihkan informasi distributor
+        const distributorContainer = document.getElementById(
+          'distributors-container'
+        );
+        distributorContainer.innerHTML = `
+      <p class="text-lg font-bold">Distributor 1</p>
+      <span class="font-semibold">Distributor Name</span>
+      <input
+        type="text"
+        placeholder="Enter Distributor Name"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+      <span class="font-semibold">Address</span>
+      <input
+        type="text"
+        placeholder="Enter Address"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+      <span class="font-semibold">Link Google Maps</span>
+      <input
+        type="text"
+        placeholder="Enter Link Address"
+        class="px-4 py-2 border rounded-lg"
+        required
+      />
+    `;
+      }
+
+      // Fungsi untuk membuka modal Add Stock
+      addStockButton.addEventListener('click', () => {
+        clearModalFields(); // Bersihkan input saat modal Add Stock dibuka
+        modal.classList.remove('hidden');
+      });
+
+      // Fungsi untuk mengisi data di modal Edit Stock
+      function handleEdit(data) {
+        // Isi input dalam modal dengan data yang diterima
+        document.querySelector('input[placeholder="Medicine Name"]').value =
+          data.medicineName;
+        document.querySelector(
+          'input[placeholder="Select Purchase Date"]'
+        ).value = data.purchaseDate;
+        document.querySelector('input[placeholder="Enter Disease"]').value =
+          data.disease;
+        document.getElementById('type').value = data.type;
+        document.querySelector(
+          'input[placeholder="Select Expired Date"]'
+        ).value = data.expiredDate;
+        document.querySelector('input[placeholder="Enter Total Stock"]').value =
+          data.totalStock;
+        document.querySelector('input[placeholder="Rp "]').value =
+          data.purchasePrice;
+
+        // Isi data distributor
+        const distributorContainer = document.getElementById(
+          'distributors-container'
+        );
+        distributorContainer.innerHTML = `
+      <p class="text-lg font-bold">Distributor 1</p>
+      <span class="font-semibold">Distributor Name</span>
+      <input
+        type="text"
+        placeholder="Enter Distributor Name"
+        class="px-4 py-2 border rounded-lg"
+        value="${data.distributorName || ''}"
+        required
+      />
+      <span class="font-semibold">Address</span>
+      <input
+        type="text"
+        placeholder="Enter Address"
+        class="px-4 py-2 border rounded-lg"
+        value="${data.address || ''}"
+        required
+      />
+      <span class="font-semibold">Link Google Maps</span>
+      <input
+        type="text"
+        placeholder="Enter Link Address"
+        class="px-4 py-2 border rounded-lg"
+        value="${data.linkMaps || ''}"
+        required
+      />
+    `;
+
+        // Tampilkan modal
+        modal.classList.remove('hidden');
+      }
+
+      function handleCancel() {
+        modal.classList.add('hidden');
+      }
+
+      function handleDelete() {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You will not be able to restore the deleted data',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Delete!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: 'Data deleted!',
+              text: 'Your stock has been deleted',
+              icon: 'success',
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
